@@ -1,0 +1,10 @@
+package org.muzeu.digital.Model.Query;
+
+public class CreationQueries {
+    //CREATE Queries
+    public static final String CREATE_DATABASE_QUERY = "CREATE SCHEMA IF NOT EXISTS museum";
+    public static final String CREATE_USERS_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS Users(first_name VARCHAR(100) NOT NULL, last_name VARCHAR(100) NOT NULL, email VARCHAR(100) NOT NULL, password VARCHAR(255) NOT NULL, address VARCHAR(255) DEFAULT NULL, phone VARCHAR(10) DEFAULT NULL, creation_date DATETIME DEFAULT current_timestamp, CONSTRAINT UQ_Users_Email UNIQUE (email))";
+    public static final String CREATE_ROLES_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS Roles(id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, role_name VARCHAR(50) NOT NULL, role_permissions VARCHAR(255), CONSTRAINT UQ_Roles_Name UNIQUE (role_name))";
+    public static final String CREATE_USER_ROLES_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS UserRoles(id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, user_id VARCHAR(100) NOT NULL, role_id BIGINT UNSIGNED NOT NULL, FOREIGN KEY (user_id) REFERENCES  Users (email) ON DELETE CASCADE  ON UPDATE CASCADE, FOREIGN KEY (role_id) REFERENCES  Roles (id) ON DELETE RESTRICT ON UPDATE CASCADE, CONSTRAINT UQ_UserRoles_User_Id UNIQUE (user_id))";
+    public static final String CREATE_ITEMS_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS Items(id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255) NOT NULL, artist VARCHAR(255) NOT NULL, art_type VARCHAR(255) NOT NULL, year_of_creation INT NOT NULL, country_of_origin VARCHAR(255))";
+}
