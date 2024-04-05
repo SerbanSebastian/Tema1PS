@@ -91,12 +91,12 @@ public class TestClass {
     @Test
     public void testGetUser() {
         try {
-            String userId = "marius123@gmail.com";
+            String userId = "john@domeniu.com";
             UserDTO userDTO = userService.getUser(userId);
             assertNotNull(userDTO);
-            assertEquals("Marius", userDTO.getFirstName());
-            assertEquals("Periculosul", userDTO.getLastName());
-            assertEquals("marius123@gmail.com", userDTO.getEmail());
+            assertEquals("John", userDTO.getFirstName());
+            assertEquals("Doe", userDTO.getLastName());
+            assertEquals("john@domeniu.com", userDTO.getEmail());
         } catch (Exception e) {
             fail("Exception occurred: " + e.getMessage());
         }
@@ -115,9 +115,9 @@ public class TestClass {
     @Test
     public void testUpdateUser() {
         String email1 = "marius_pericol@yahoo.com";
-        String email2 = "john@yahoo.com";
+        String email2 = "john@domeniu.com";
         try {
-            UserDTO userToUpdate = new UserDTO("Marius", "Periculosul", "marius123@gmail.com", "Address", "000000000", LocalDateTime.now());
+            UserDTO userToUpdate = new UserDTO("Marius", "Popescu", "marius123@gmail.com", "Address", "000000000", LocalDateTime.now());
             UserDTO updatedUser = userService.updateUser(userToUpdate, email2);
             assertNotNull(updatedUser);
         } catch (Exception e) {
